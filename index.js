@@ -3,8 +3,6 @@ const sander = require('sander')
 const path = require('path')
 const yaml = require('js-yaml')
 
-const data = yaml.safeLoad(fs.readFileSync('.yoyo.yml', 'utf8'))
-
 const library = '../snippets'
 
 function loadSnippet(name) {
@@ -16,6 +14,13 @@ function loadSnippet(name) {
   })
   return templates
 }
+
+if (!sander.existsSync('.yoyo.yml')) {
+  console.error(`Missing configuration file: ${__dirname}/.yoyo.yml`)
+  process.exit(1)
+}
+
+const data = yaml.safeLoad(fs.readFileSync('.yoyo.yml', 'utf8'))
 
 data.snippets.forEach((snippet) => {
   loadSnippet(snippet)
