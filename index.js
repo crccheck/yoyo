@@ -3,13 +3,25 @@ const sander = require('sander')
 const path = require('path')
 const yaml = require('js-yaml')
 
-const library = '../snippets'
+// FIXME magic constant
+const libraryDir = '../snippets'
 
-function loadSnippet(name) {
-  const snippetHome = path.join(`${library}`, name)
-  const templates = sander.lsrSync(`${snippetHome}`)
+function readOrCreateFileSync(path, options) {
+  try {
+    return fs.readFileSync(path, options)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function loadSnippetFromLibrary(name) {
+  const snippetHome = path.join(libraryDir, name)
+  const templates = sander.lsrSync(snippetHome)
   templates.forEach((templatePath) => {
-    console.log('copying', path.join(snippetHome, templatePath), templatePath)
+    const content = fs.readFileSync(path.join(snippetHome, templatePath), 'utf8')
+    const firstLine = content.split('\n')[0]
+
+    const destinationContent = readOrCreateFileSync(templatePath, 'utf8')
     sander.copyFileSync(path.join(snippetHome, templatePath)).to(templatePath)
   })
   return templates
@@ -20,8 +32,8 @@ if (!sander.existsSync('.yoyo.yml')) {
   process.exit(1)
 }
 
-const data = yaml.safeLoad(fs.readFileSync('.yoyo.yml', 'utf8'))
+const projectConfig = yaml.safeLoad(fs.readFileSync('.yoyo.yml', 'utf8'))
 
-data.snippets.forEach((snippet) => {
-  loadSnippet(snippet)
+projectConfig.snippets.forEach((snippet) => {
+  loadSnippetFromLibrary(snippet)
 })
