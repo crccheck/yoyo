@@ -10,7 +10,9 @@ function readOrCreateFileSync(path, options) {
   try {
     return fs.readFileSync(path, options)
   } catch (e) {
-    console.log(e)
+    if (e.code === 'ENOENT') {
+      return ''
+    }
   }
 }
 
@@ -22,7 +24,13 @@ function loadSnippetFromLibrary(name) {
     const firstLine = content.split('\n')[0]
 
     const destinationContent = readOrCreateFileSync(templatePath, 'utf8')
-    sander.copyFileSync(path.join(snippetHome, templatePath)).to(templatePath)
+    const destinationLines = destinationContent.split('\n')
+    let insertAt = destinationLines.indexOf(firstLine)
+    if (insertAt === -1) {
+      insertAt = destinationLines.length
+    }
+    destinationLines.splice(insertAt, 0, content)
+    fs.writeFileSync(templatePath, destinationLines.join('\n'), 'utf8')
   })
   return templates
 }
