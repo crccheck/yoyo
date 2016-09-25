@@ -27,6 +27,7 @@ An ideal meta would contain:
 
 * Authorship - You, also doubles as the namespace
 * Name - Something like you'd name a repository
+* Description - A short description of why you would use this snippet
 * Version - [semver] style version string so consumers of your snippet can upgrade safely
 * Homepage - A URL
 * Tags - To help people find your snippet
