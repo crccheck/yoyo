@@ -47,9 +47,9 @@ And one of:
   * a JavaScript style regexp (example: `/-{80}/`)
   * a line number (example: `5`)
 * `length` - One of:
-  * `same blank lines`
   * `same lines`
-  * a number of lines
+  * `same blank lines` This *includes* trailing blank lines
+  * the number of lines (example: '5')
 
 We could go nuts with this, but as long as you only have simple snippets, worse
 case scenario, the user has to some manual text fixing. That is greatly

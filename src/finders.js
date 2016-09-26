@@ -48,3 +48,22 @@ exports.lastMarkerRegexp = function (regexp, targetLines, firstLineNumber) {
   }
   return i
 }
+
+exports.lengthSameLines = function (snippetLines, targetLines, firstLineNumber) {
+  return firstLineNumber + snippetLines.length - 1
+}
+
+exports.lengthSameBlankLines = function (snippetLines, targetLines, firstLineNumber) {
+  let numBlankInSnippet = snippetLines.filter((x) => x === '').length
+  let i = firstLineNumber
+  for (; i < targetLines.length; i++) {
+    if (targetLines[i] === '') {
+      numBlankInSnippet--
+      if (numBlankInSnippet === 0) {
+        return i
+      }
+    }
+  }
+
+  return i - 1
+}

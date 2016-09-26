@@ -75,3 +75,69 @@ describe('lastMarker', () => {
     })
   })
 })
+
+describe('length', () => {
+  describe('same lines', () => {
+    const snippetLines = [
+      'a',
+      'b',
+      '',
+      'c',
+      'd',
+      '',
+      ''
+    ]
+    it('works', () => {
+      assert.equal(finders.lengthSameLines(snippetLines, targetLines, 0), 6)
+    })
+  })
+
+  describe('same blank lines', () => {
+    const snippetLines = [
+      'a',
+      'b',
+      '',
+      'c',
+      'd',
+      '',
+      ''
+    ]
+    const testTargetLines = [
+      'a',
+      'a2',
+      'b',
+      '',
+      'c',
+      'd',
+      'd2',
+      '',
+      '',  // <-- should select this one
+      'extra'
+    ]
+    it('works', () => {
+      assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 0), 8)
+    })
+  })
+
+  describe('same blank lines but the target is too short', () => {
+    const snippetLines = [
+      'a',
+      'b',
+      '',
+      'c',
+      'd',
+      '',
+      ''
+    ]
+    const testTargetLines = [
+      'a',
+      'a2',
+      'b',
+      '',
+      'extra'  // <-- should select this one
+    ]
+    it('works', () => {
+      assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 0), 4)
+    })
+  })
+})
