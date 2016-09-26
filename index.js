@@ -21,7 +21,10 @@ function loadSnippetFromLibrary(name) {
   const templates = sander.lsrSync(snippetHome)
   templates.forEach((templatePath) => {
     const content = fs.readFileSync(path.join(snippetHome, templatePath), 'utf8')
-    const firstLine = content.split('\n')[0]
+    const contentLines = content.split('\n')
+    const firstLine = contentLines[0]
+    const lastLine = contentLines[contentLines.length - 2]
+    console.log(lastLine)
 
     const destinationContent = readOrCreateFileSync(templatePath, 'utf8')
     const destinationLines = destinationContent.split('\n')

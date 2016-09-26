@@ -32,6 +32,21 @@ An ideal meta would contain:
 * Homepage - A URL
 * Tags - To help people find your snippet
 
+You should also include:
+
+* `firstMarker` - One of:
+  * `same first line`
+  * a line number (example: 5)
+
+And one of:
+
+* `length` - One of:
+  * `same blank lines`
+  * `same lines`
+  * a number of lines
+* `lastMarker` - One of:
+  * `same last line`
+
 The template file (or a whole directory) is just that: a template. If you
 choose to create a complicated template, you can do that. But instead, you
 should write lots of small/specific snippets instead a kitchen sink snippet. A
