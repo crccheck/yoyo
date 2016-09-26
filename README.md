@@ -36,7 +36,8 @@ So we can update existing inserted snippets, you should specify:
 
 * `firstMarker` - One of:
   * `same first line` *default*
-  * a JavaScript style regexp (example: `/-{80}/`)
+  * a JavaScript style regexp (example: `/-{80}/`). It is up to the author to
+    anchor the regular expression as they intended.
   * a line number (example: `5`)
 
 And one of:

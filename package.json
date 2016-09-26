@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "tdd": "mocha -w test",
+    "tdd": "mocha --watch --reporter dot test",
     "pretest": "standard",
     "test": "mocha test"
   },

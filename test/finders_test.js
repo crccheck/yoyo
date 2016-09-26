@@ -1,12 +1,14 @@
 const assert = require('assert')
 const finders = require('../src/finders')
 
-describe('firstMarker', () => {
-  const targetLines = [
-    'hello',
-    'goodbye'
-  ]
+const targetLines = [
+  'hello',
+  'goodbye',
+  'hello',
+  'goodbye'
+]
 
+describe('firstMarker', () => {
   describe('same first line', () => {
     it('identifies correct line index', () => {
       const snippetLines = [
@@ -19,7 +21,57 @@ describe('firstMarker', () => {
       const snippetLines = [
         'foo'
       ]
-      assert.equal(finders.firstMarkerSame(snippetLines, targetLines), 2)
+      assert.equal(finders.firstMarkerSame(snippetLines, targetLines), 4)
+    })
+  })
+
+  describe('regexp', () => {
+    it('identifies correct line index', () => {
+      assert.equal(finders.firstMarkerRegexp(/^good/, targetLines), 1)
+    })
+
+    it('suggests the end of the file if line does not exist', () => {
+      assert.equal(finders.firstMarkerRegexp(/foo/, targetLines), 4)
+    })
+  })
+})
+
+describe('lastMarker', () => {
+  describe('same last line index', () => {
+    it('identifies correct line index', () => {
+      const snippetLines = [
+        'nevermind',
+        'goodbye'
+      ]
+      assert.equal(finders.lastMarkerSame(snippetLines, targetLines, 0), 1)
+    })
+
+    it('identifies correct line index with empty lines in snippet', () => {
+      const snippetLines = [
+        'nevermind',
+        'goodbye',
+        '',
+        ''
+      ]
+      assert.equal(finders.lastMarkerSame(snippetLines, targetLines, 0), 1)
+    })
+
+    it('skips past irrevelent lines', () => {
+      const snippetLines = [
+        'nevermind',
+        'goodbye'
+      ]
+      assert.equal(finders.lastMarkerSame(snippetLines, targetLines, 2), 3)
+    })
+  })
+
+  describe('regexp', () => {
+    it('identifies correct line index', () => {
+      assert.equal(finders.lastMarkerRegexp(/^good/, targetLines, 2), 3)
+    })
+
+    it('suggests the end of the file if line does not exist', () => {
+      assert.equal(finders.lastMarkerRegexp(/foo/, targetLines, 0), 4)
     })
   })
 })
