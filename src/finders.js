@@ -1,3 +1,5 @@
+// FIRST
+
 exports.firstMarkerSame = function (snippetLines, targetLines) {
   const firstLine = snippetLines[0]
   const match = targetLines.indexOf(firstLine)
@@ -18,6 +20,8 @@ exports.firstMarkerRegexp = function (regexp, targetLines) {
   }
   return i
 }
+
+// LAST
 
 function lastNonblankLine (lines) {
   for (let i = lines.length - 1; i >= 0; i--) {
@@ -48,6 +52,8 @@ exports.lastMarkerRegexp = function (regexp, targetLines, firstLineNumber) {
   }
   return i
 }
+
+// LENGTH
 
 exports.lengthSameLines = function (snippetLines, targetLines, firstLineNumber) {
   return firstLineNumber + snippetLines.length - 1

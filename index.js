@@ -1,7 +1,8 @@
 const fs = require('fs')
-const sander = require('sander')
 const path = require('path')
+const sander = require('sander')
 const yaml = require('js-yaml')
+// const finders = require('./src/finders')
 
 // FIXME magic constant
 const libraryDir = '../snippets'
