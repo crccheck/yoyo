@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "YoYo",
   "main": "index.js",
+  "engines": {
+    "node": "6.x"
+  },
   "scripts": {
     "start": "node index.js",
     "tdd": "mocha --watch --reporter dot test",
