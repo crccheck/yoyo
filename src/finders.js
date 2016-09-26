@@ -1,4 +1,4 @@
-exports.firstMarkerSame = function(snippetLines, targetLines) {
+exports.firstMarkerSame = function (snippetLines, targetLines) {
   const firstLine = snippetLines[0]
   const match = targetLines.indexOf(firstLine)
 
@@ -6,5 +6,5 @@ exports.firstMarkerSame = function(snippetLines, targetLines) {
     return targetLines.length
   }
 
-  return match;
+  return match
 }

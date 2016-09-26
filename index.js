@@ -6,7 +6,7 @@ const yaml = require('js-yaml')
 // FIXME magic constant
 const libraryDir = '../snippets'
 
-function readOrCreateFileSync(path, options) {
+function readOrCreateFileSync (path, options) {
   try {
     return fs.readFileSync(path, options)
   } catch (e) {
@@ -16,7 +16,7 @@ function readOrCreateFileSync(path, options) {
   }
 }
 
-function loadSnippetFromLibrary(name) {
+function loadSnippetFromLibrary (name) {
   const snippetHome = path.join(libraryDir, name)
   const templates = sander.lsrSync(snippetHome)
   templates.forEach((templatePath) => {
