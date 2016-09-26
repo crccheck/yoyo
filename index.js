@@ -10,7 +10,7 @@ function readOrCreateFileSync(path, options) {
   try {
     return fs.readFileSync(path, options)
   } catch (e) {
-    if (e.code === 'ENOENT') {
+    if (e.code === 'ENOENT') {  // File missing
       return ''
     }
   }

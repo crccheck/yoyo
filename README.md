@@ -32,20 +32,27 @@ An ideal meta would contain:
 * Homepage - A URL
 * Tags - To help people find your snippet
 
-You should also include:
+So we can update existing inserted snippets, you should specify:
 
 * `firstMarker` - One of:
-  * `same first line`
-  * a line number (example: 5)
+  * `same first line` *default*
+  * a JavaScript style regexp (example: `/-{80}/`)
+  * a line number (example: `5`)
 
 And one of:
 
+* `lastMarker` - One of:
+  * `same last line` (will ignore blank lines)
+  * a JavaScript style regexp (example: `/-{80}/`)
+  * a line number (example: `5`)
 * `length` - One of:
   * `same blank lines`
   * `same lines`
   * a number of lines
-* `lastMarker` - One of:
-  * `same last line`
+
+We could go nuts with this, but as long as you only have simple snippets, worse
+case scenario, the user has to some manual text fixing. That is greatly
+preferred to adding complexity here.
 
 The template file (or a whole directory) is just that: a template. If you
 choose to create a complicated template, you can do that. But instead, you
