@@ -1,0 +1,37 @@
+{
+  "name": "yoyo",
+  "version": "0.0.0",
+  "description": "YoYo",
+  "main": "index.js",
+  "engines": {
+    "node": "6.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "tdd": "mocha --watch --reporter dot test",
+    "pretest": "standard",
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crccheck/yoyo.git"
+  },
+  "keywords": [],
+  "author": "Chris Chang <c@crccheck.com> (https://crccheck.com/blog)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crccheck/yoyo/issues"
+  },
+  "homepage": "https://github.com/crccheck/yoyo#readme",
+  "dependencies": {
+    "js-yaml": "^3.6.1",
+    "sander": "^0.5.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "standard": "^8.1.0"
+  },
+  "standard": {
+    "globals": ["describe", "it"]
+  }
+}
