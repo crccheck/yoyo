@@ -1,6 +1,7 @@
 const debug = require('debug')('finders')
 
 // FIRST
+////////
 
 exports.firstMarkerSame = function (snippetLines, targetLines) {
   const firstLine = snippetLines[0]
@@ -26,6 +27,7 @@ exports.firstMarkerRegexp = function (regexp, targetLines) {
 }
 
 // LAST
+///////
 
 function lastNonblankLine (lines) {
   for (let i = lines.length - 1; i >= 0; i--) {
@@ -58,6 +60,7 @@ exports.lastMarkerRegexp = function (regexp, targetLines, firstLineNumber) {
 }
 
 // LENGTH
+/////////
 
 exports.lengthSameLines = function (snippetLines, targetLines, firstLineNumber) {
   return firstLineNumber + snippetLines.length - 1

@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node index.js",
     "tdd": "mocha --watch --reporter dot test",
-    "pretest": "standard",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
     "test": "mocha test"
   },
   "repository": {

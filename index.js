@@ -11,6 +11,7 @@ const CONFIG_FILE = '.yoyo.yml'
 const libraryDir = path.join(__dirname, 'snippets')
 debug('Using libraries found in: %s', libraryDir)
 
+
 function readOrCreateFileSync (path, options) {
   try {
     return fs.readFileSync(path, options)
