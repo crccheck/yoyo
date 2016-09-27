@@ -3,6 +3,7 @@ const path = require('path')
 const sander = require('sander')
 const yaml = require('js-yaml')
 const finders = require('./src/finders')
+const merge = require('./src').merge
 
 // FIXME magic constant
 const libraryDir = '../snippets'
@@ -22,20 +23,9 @@ function loadSnippetFromLibrary (name) {
   const templates = sander.lsrSync(snippetHome)
   templates.forEach((templatePath) => {
     const snippetContent = fs.readFileSync(path.join(snippetHome, templatePath), 'utf8')
-    const snippetLines = snippetContent.split('\n')
-
     const targetContent = readOrCreateFileSync(templatePath, 'utf8')
-    const targetLines = targetContent.split('\n')
-
-    const fromIndex = finders.firstMarkerSame(snippetLines, targetLines)
-    const indexEnd = finders.lengthSameBlankLines(snippetLines, targetLines, fromIndex)
-    targetLines.splice(
-      fromIndex,
-      indexEnd - fromIndex + 1,
-      snippetContent.substr(0, snippetContent.length)
-    )
-
-    fs.writeFileSync(templatePath, targetLines.join('\n'), 'utf8')
+    const finalContent = merge(snippetContent, targetContent, finders.firstMarkerSame, finders.lengthSameBlankLines)
+    fs.writeFileSync(templatePath, finalContent, 'utf8')
   })
   return templates
 }
