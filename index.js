@@ -24,6 +24,10 @@ function readOrCreateFileSync (path, options) {
 
 function loadSnippetFromLibrary (name) {
   const snippetHome = path.join(libraryDir, name)
+  let meta = {}
+  if (sander.existsSync(path.join(snippetHome, CONFIG_FILE))) {
+    meta = yaml.safeLoad(fs.readFileSync(path.join(snippetHome, CONFIG_FILE), 'utf8'))
+  }
   const templates = sander.lsrSync(snippetHome)
   templates.forEach((templatePath) => {
     if (templatePath === CONFIG_FILE) {
@@ -36,7 +40,10 @@ function loadSnippetFromLibrary (name) {
     const finalContent = merge(snippetContent, targetContent, finders.firstMarkerSame, finders.lengthSameBlankLines)
     fs.writeFileSync(templatePath, finalContent, 'utf8')
   })
-  return templates
+  if (meta.description) {
+    console.log('Installed snippet "%s"', name)
+    console.log(meta.description)
+  }
 }
 
 if (!sander.existsSync(CONFIG_FILE)) {
