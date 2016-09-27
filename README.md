@@ -26,12 +26,14 @@ is a directory that contains:
 
 An ideal meta would contain:
 
-* Authorship - You, also doubles as the namespace
+* Author - You, also doubles as the namespace
 * Name - Something like you'd name a repository
-* Description - A short description of why you would use this snippet
-* Version - [semver] style version string so consumers of your snippet can upgrade safely
+* Description - A blurb about the snippet, will also be shown when it's installed.
 * Homepage - A URL
-* Tags - To help people find your snippet
+* Keywords - To help people find your snippet
+
+All this is optional, if you included it in `package.json`, there's no reason
+to duplicate it here.
 
 So we can update existing inserted snippets, you should specify:
 
@@ -57,9 +59,17 @@ case scenario, the user has to some manual text fixing. That is greatly
 preferred to adding complexity here.
 
 The template file (or a whole directory) is just that: a template. If you
-choose to create a complicated template, you can do that. But instead, you
-should write lots of small/specific snippets instead a kitchen sink snippet. A
-great example is the [Babel Setup] site. Each example is short and simple.
+choose to create a complicated template, you can do that. Instead, you should
+write lots of small snippets instead kitchen sinks.
+
+#### Where it looks for snippets
+
+Snippets are searched for in the following order:
+
+1. local `./snippets`
+2. `node_modules/...`
+3. environment variable
+4. bundled snippets
 
   [Yeoman generators]: http://yeoman.io/authoring/
   [Chef recipes]: https://docs.chef.io/recipes.html
