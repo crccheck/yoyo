@@ -1,3 +1,4 @@
+const debug = require('debug')('main')
 const fs = require('fs')
 const path = require('path')
 const sander = require('sander')
@@ -22,6 +23,7 @@ function loadSnippetFromLibrary (name) {
   const snippetHome = path.join(libraryDir, name)
   const templates = sander.lsrSync(snippetHome)
   templates.forEach((templatePath) => {
+    debug('%s/%s', name, templatePath)
     const snippetContent = fs.readFileSync(path.join(snippetHome, templatePath), 'utf8')
     const targetContent = readOrCreateFileSync(templatePath, 'utf8')
     const finalContent = merge(snippetContent, targetContent, finders.firstMarkerSame, finders.lengthSameBlankLines)

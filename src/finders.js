@@ -1,14 +1,18 @@
+const debug = require('debug')('finders')
+
 // FIRST
 
 exports.firstMarkerSame = function (snippetLines, targetLines) {
   const firstLine = snippetLines[0]
-  const match = targetLines.indexOf(firstLine)
+  const idx = targetLines.indexOf(firstLine)
 
-  if (match === -1) {
+  if (idx === -1) {
+    debug('NOTFOUND')
     return targetLines.length
   }
 
-  return match
+  debug('start idx: %s', idx)
+  return idx
 }
 
 exports.firstMarkerRegexp = function (regexp, targetLines) {
@@ -34,13 +38,13 @@ function lastNonblankLine (lines) {
 
 exports.lastMarkerSame = function (snippetLines, targetLines, firstLineNumber) {
   const lastLine = lastNonblankLine(snippetLines)
-  const match = targetLines.indexOf(lastLine, firstLineNumber)
+  const idx = targetLines.indexOf(lastLine, firstLineNumber)
 
-  if (match === -1) {
+  if (idx === -1) {
     return targetLines.length
   }
 
-  return match
+  return idx
 }
 
 exports.lastMarkerRegexp = function (regexp, targetLines, firstLineNumber) {
@@ -66,10 +70,12 @@ exports.lengthSameBlankLines = function (snippetLines, targetLines, firstLineNum
     if (targetLines[i] === '') {
       numBlankInSnippet--
       if (numBlankInSnippet === 0) {
+        debug('end %s', i)
         return i
       }
     }
   }
 
+  debug('end %s gave up looking', i)
   return i - 1
 }
