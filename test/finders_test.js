@@ -87,7 +87,7 @@ describe('length', () => {
       '',
       ''
     ]
-    it('works', () => {
+    it('selects correct ending line', () => {
       assert.equal(finders.lengthSameLines(snippetLines, targetLines, 0), 6)
     })
   })
@@ -112,10 +112,13 @@ describe('length', () => {
       'd2',
       '',
       '',  // <-- should select this one
-      'extra'
+      'extra',
+      ''  // <-- then this one
     ]
-    it('works', () => {
+    it('selects correct ending line', () => {
       assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 0), 8)
+      assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 1), 8)
+      assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 4), 10)
     })
   })
 
@@ -136,7 +139,7 @@ describe('length', () => {
       '',
       'extra'  // <-- should select this one
     ]
-    it('works', () => {
+    it('selects correct ending line', () => {
       assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 0), 4)
     })
   })
