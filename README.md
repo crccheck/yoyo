@@ -21,7 +21,7 @@ Snippets are like [Yeoman generators], [Chef recipes], [Ansible roles],
 A snippet can be as large or small as you can write. At the minimum, a snippet
 is a directory that contains:
 
-1. Meta information in a `.meta.yml`
+1. Meta information in a `.yoyo.yml`
 2. A template file
 
 An ideal meta would contain:
@@ -73,3 +73,10 @@ great example is the [Babel Setup] site. Each example is short and simple.
 
 A configuration file basically just a list of what snippets your project should
 have, along with any local overrides.
+
+It's also named `.yoyo.yml`.
+
+## Notes
+
+It's always `.yoyo.yml` and never `.yoyo.yaml`. I don't see a reason to support
+both and it's always bothered me that I had to pick which extension.
