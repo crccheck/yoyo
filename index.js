@@ -6,8 +6,8 @@ const yaml = require('js-yaml')
 const finders = require('./src/finders')
 const merge = require('./src').merge
 
-// FIXME magic constant
-const libraryDir = '../snippets'
+const libraryDir = path.join(__dirname, 'snippets')
+debug('Using libraries found in: %s', libraryDir)
 
 function readOrCreateFileSync (path, options) {
   try {
