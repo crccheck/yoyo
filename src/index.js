@@ -13,7 +13,7 @@ function merge (snippetContent, targetContent, fromIndexStrategy, indexEndStrate
   const indexEnd = indexEndStrategy(snippetLines, targetLines, fromIndex)
   const before = targetLines.slice(0, fromIndex).join('\n')
   const after = targetLines.slice(indexEnd).join('\n')
-  console.log(before.replace(/\n/g, '\\n') + snippetContent.replace(/\n/g, '\\n'), after.replace(/\n/g, '\\n'))
+  // console.log(before.replace(/\n/g, '\\n') + snippetContent.replace(/\n/g, '\\n'), after.replace(/\n/g, '\\n'))
   return before + snippetContent + after
 
   // old way:

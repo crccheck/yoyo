@@ -29,11 +29,11 @@ describe('merge', () => {
   })
 
   it('can repeatedly apply snippets', () => {
-    const snippetA = 'A\nB\nC\n\n'
+    const snippetA = 'Aa\nBb\nCc\n\n'
     const snippetB = '1\n2\n3\n4\n'
-    const intermediateContent = merge(snippetA, 'A\nB\nC\n\n1\n2\n3\n4\n', finders.firstMarkerSame, finders.lengthSameBlankLines)
+    const intermediateContent = merge(snippetA, 'Aa\nBb\nCc\n\n1\n2\n3\n4\n', finders.firstMarkerSame, finders.lengthSameBlankLines)
     const finalContent = merge(snippetB, intermediateContent, finders.firstMarkerSame, finders.lengthSameBlankLines)
-    assert.equal(finalContent, 'A\nB\nC\n\n1\n2\n3\n4\n')
+    assert.equal(finalContent, 'Aa\nBb\nCc\n\n1\n2\n3\n4\n')
   })
 
   it('can update snippets', () => {
