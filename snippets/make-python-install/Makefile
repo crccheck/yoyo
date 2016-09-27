@@ -5,5 +5,3 @@ install: ## Install requirements
 requirements.txt: ## Regenerate requirements.txt
 requirements.txt: requirements.in
 	pip-compile $< > $@
-
-# end make-python-install
