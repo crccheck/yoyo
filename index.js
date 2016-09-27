@@ -29,7 +29,12 @@ function loadSnippetFromLibrary (name) {
 
     const fromIndex = finders.firstMarkerSame(snippetLines, targetLines)
     const indexEnd = finders.lengthSameBlankLines(snippetLines, targetLines, fromIndex)
-    targetLines.splice(fromIndex, indexEnd - fromIndex, snippetContent)
+    targetLines.splice(
+      fromIndex,
+      indexEnd - fromIndex + 1,
+      snippetContent.substr(0, snippetContent.length)
+    )
+
     fs.writeFileSync(templatePath, targetLines.join('\n'), 'utf8')
   })
   return templates
