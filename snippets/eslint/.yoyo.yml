@@ -1,0 +1,15 @@
+---
+name: 'eslint'
+description: |
+  Adds my eslint config
+
+  Also need to run:
+
+      npm install --save-dev eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise
+
+
+  And in your `package.json` scripts, add:
+
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+firstMarker: 0

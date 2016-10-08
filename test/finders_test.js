@@ -5,21 +5,21 @@ const targetLines = [
   'hello',
   'goodbye',
   'hello',
-  'goodbye'
+  'goodbye',
 ]
 
 describe('firstMarker', () => {
   describe('same first line', () => {
     it('identifies correct line index', () => {
       const snippetLines = [
-        'hello'
+        'hello',
       ]
       assert.equal(finders.firstMarkerSame(snippetLines, targetLines), 0)
     })
 
     it('suggests the end of the file if line does not exist', () => {
       const snippetLines = [
-        'foo'
+        'foo',
       ]
       assert.equal(finders.firstMarkerSame(snippetLines, targetLines), 4)
     })
@@ -41,7 +41,7 @@ describe('lastMarker', () => {
     it('identifies correct line index', () => {
       const snippetLines = [
         'nevermind',
-        'goodbye'
+        'goodbye',
       ]
       assert.equal(finders.lastMarkerSame(snippetLines, targetLines, 0), 1)
     })
@@ -51,7 +51,7 @@ describe('lastMarker', () => {
         'nevermind',
         'goodbye',
         '',
-        ''
+        '',
       ]
       assert.equal(finders.lastMarkerSame(snippetLines, targetLines, 0), 1)
     })
@@ -59,7 +59,7 @@ describe('lastMarker', () => {
     it('skips past irrevelent lines', () => {
       const snippetLines = [
         'nevermind',
-        'goodbye'
+        'goodbye',
       ]
       assert.equal(finders.lastMarkerSame(snippetLines, targetLines, 2), 3)
     })
@@ -85,7 +85,7 @@ describe('length', () => {
       'c',
       'd',
       '',
-      ''
+      '',
     ]
     it('selects correct ending line', () => {
       assert.equal(finders.lengthSameLines(snippetLines, targetLines, 0), 6)
@@ -100,7 +100,7 @@ describe('length', () => {
       'c',
       'd',
       '',
-      ''
+      '',
     ]
     const testTargetLines = [
       'a',
@@ -113,7 +113,7 @@ describe('length', () => {
       '',
       '',  // <-- should select this one
       'extra',
-      ''  // <-- then this one
+      '',  // <-- then this one
     ]
     it('selects correct ending line', () => {
       assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 0), 8)
@@ -130,14 +130,14 @@ describe('length', () => {
       'c',
       'd',
       '',
-      ''
+      '',
     ]
     const testTargetLines = [
       'a',
       'a2',
       'b',
       '',
-      'extra'  // <-- should select this one
+      'extra',  // <-- should select this one
     ]
     it('selects correct ending line', () => {
       assert.equal(finders.lengthSameBlankLines(snippetLines, testTargetLines, 0), 4)

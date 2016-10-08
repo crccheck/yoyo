@@ -1,0 +1,5 @@
+[*]
+end_of_line = lf
+insert_final_newline = true
+# We have to allow extra whitespace at the end of files to breaks to format right
+trim_trailing_whitespace = false
