@@ -1,10 +1,14 @@
 YoYo (TBD)
 ==========
 
-This helps you maintain snippets. Like [Yeoman] and [Cookiecutter], this is
-designed to eliminate the boilerplate when starting a new project. Unlike those
-projects, when you update a snippet, you can easily backport it to an existing
-project!
+This is a tool to helps you maintain and use a library of snippets. Snippets
+are those little bits of boilerplate that go in every project. But there's
+more; as you update your snippets, you can backport those changes to your
+existing project!
+
+Like [Yeoman] and [Cookiecutter], this is designed to eliminate boilerplate
+when starting a new project. Build a collection of snippets for your team and
+get consistent code across all your projects.
 
   [Yeoman]: http://yeoman.io/
   [Cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/
@@ -16,7 +20,9 @@ Usage
 ### Snippets
 
 Snippets are like [Yeoman generators], [Chef recipes], [Ansible roles],
-[Homebrew formulas], etc.
+[Homebrew formulas], etc. See the
+[examples](https://github.com/crccheck/yoyo/tree/master/snippets) to get a
+better idea.
 
 A snippet can be as large or small as you can write. At the minimum, a snippet
 is a directory that contains:
@@ -86,7 +92,8 @@ have, along with any local overrides.
 
 It's also named `.yoyo.yml`.
 
-## Notes
+Notes
+-----
 
 It's always `.yoyo.yml` and never `.yoyo.yaml`. I don't see a reason to support
-both and it's always bothered me that I had to pick which extension.
+both `.yml` and `.yaml` and it's always bothered me that I had to choose.
