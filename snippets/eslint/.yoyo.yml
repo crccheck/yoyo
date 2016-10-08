@@ -1,9 +1,15 @@
 ---
 name: 'eslint'
 description: |
+  Adds my eslint config
+
   Also need to run:
 
-      npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise
+      npm install --save-dev eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise
 
-  https://github.com/feross/eslint-config-standard
+
+  And in your `package.json` scripts, add:
+
+    "lint": "eslint .",
+    "pretest": "npm run lint",
 firstMarker: 0
