@@ -1,20 +1,10 @@
 import os
 
 import ruamel.yaml as yaml
+from .library import Library
 
 
-library = set()
-
-
-def build_library(base=None) -> None:
-    """
-    Build the internal library of what snippets are available.
-    """
-    if base is None:
-        base = os.path.join(os.path.dirname(__file__), '..', 'snippets')
-    paths = [os.path.abspath(os.path.join(base, x)) for x in os.listdir(base)]
-    for path in paths:
-        library.add(path)
+library = Library()
 
 
 def parse_local_config(cwd=None) -> dict:
@@ -27,4 +17,5 @@ def parse_local_config(cwd=None) -> dict:
 
 def run() -> None:
     config = parse_local_config()
-    print(config)
+    for snippet in config.get('snippets', []):
+        print(snippet)
