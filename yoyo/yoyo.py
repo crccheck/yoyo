@@ -17,6 +17,14 @@ def build_library(base=None) -> None:
         library.add(path)
 
 
-# read .yoyo.yml
-with open('.yoyo.yml') as fh:
-    data = yaml.safe_load(fh)
+def parse_local_config(cwd=None) -> dict:
+    if cwd is None:
+        cwd = os.getcwd()
+    with open(os.path.join(cwd, '.yoyo.yml')) as fh:
+        data = yaml.safe_load(fh)
+    return data
+
+
+def run() -> None:
+    config = parse_local_config()
+    print(config)
