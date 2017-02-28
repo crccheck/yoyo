@@ -1,5 +1,6 @@
 examples/*
 
 # Generated files
-.cache
 __pycache__
+.cache
+node_modules
