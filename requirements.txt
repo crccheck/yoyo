@@ -1,0 +1,6 @@
+# UGH
+ruamel.yaml>=0.13.13
+
+# Dev
+pytest>=3.0.6
+flake8>=3.3.0
