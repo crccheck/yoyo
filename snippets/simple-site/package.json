@@ -1,7 +1,8 @@
 {
   "scripts": {
+    "build:js": "browserify src/app.js -t babelify -o public/app.js",
+    "watch:js": "watchify src/app.js -t babelify -o public/app.js",
     "watch:css": "node-sass src --output public --watch",
-    "watch:js": "watchify src/app.js -o public/app.js -t babelify",
     "serve": "browser-sync start --server public --files public --no-open",
     "dev": "concurrently --kill-others 'npm run serve' 'npm run watch:css' 'npm run watch:js'"
   },
