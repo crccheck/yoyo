@@ -8,14 +8,19 @@ def library():
     return Library()
 
 
-def test_Library_init(library):
+def test_init(library):
     assert library
 
 
-def test_Library_add(library):
+def test_add(library):
     library.add('/some/path')
     assert(library._snippets['path'])
 
 
-def test_Library_str(library):
-    assert str(library)
+def test_getitem(library):
+    library.add('/some/path')
+    assert library['path']
+
+
+def test_str(library):
+    assert 'Library' in str(library)

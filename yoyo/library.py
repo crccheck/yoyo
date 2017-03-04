@@ -16,8 +16,8 @@ class Library:
     def add(self, path) -> None:
         self._snippets[os.path.basename(path)] = path
 
-    def get(self, name):
-        pass
+    def __getitem__(self, key):
+        return self._snippets[key]
 
     def __str__(self):
         n_snippets = len(self._snippets)
