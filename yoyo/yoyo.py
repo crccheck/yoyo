@@ -7,7 +7,7 @@ from .library import Library
 library = Library()
 
 
-def parse_local_config(cwd=None) -> dict:
+def get_local_config(cwd=None) -> dict:
     if cwd is None:
         cwd = os.getcwd()
     with open(os.path.join(cwd, '.yoyo.yml')) as fh:
@@ -15,7 +15,7 @@ def parse_local_config(cwd=None) -> dict:
     return data
 
 
-def run() -> None:
-    config = parse_local_config()
+def main() -> None:
+    config = get_local_config()
     for snippet in config.get('snippets', []):
         print(snippet)
