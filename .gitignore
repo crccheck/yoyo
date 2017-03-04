@@ -8,4 +8,5 @@ dist/
 # Generated files
 __pycache__
 .cache
+.coverage
 node_modules

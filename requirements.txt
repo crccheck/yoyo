@@ -3,4 +3,6 @@ ruamel.yaml>=0.13.13
 
 # Dev
 pytest>=3.0.6
+pytest-cov
+pytest-watch
 flake8>=3.3.0
