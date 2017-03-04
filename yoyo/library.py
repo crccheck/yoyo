@@ -1,5 +1,7 @@
 import os
 
+from .snippet import Snippet
+
 
 class Library:
     def __init__(self, *search_dirs):
@@ -11,10 +13,10 @@ class Library:
             paths = [os.path.abspath(os.path.join(directory, x))
                      for x in os.listdir(directory)]
             for path in paths:
-                self.add(path)
+                self.add(Snippet(path))
 
-    def add(self, path) -> None:
-        self._snippets[os.path.basename(path)] = path
+    def add(self, snippet: Snippet) -> None:
+        self._snippets[snippet.name] = snippet
 
     def __getitem__(self, key):
         return self._snippets[key]
