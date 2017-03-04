@@ -18,4 +18,4 @@ def get_local_config(cwd=None) -> dict:
 def main() -> None:
     config = get_local_config()
     for snippet in config.get('snippets', []):
-        print(snippet)
+        print(library[snippet])
