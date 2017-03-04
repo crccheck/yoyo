@@ -16,11 +16,14 @@ class Library:
                 self.add(Snippet(path))
 
     def add(self, snippet: Snippet) -> None:
-        self._snippets[snippet.name] = snippet
+        if snippet.name not in self._snippets:
+            self._snippets[snippet.name] = snippet
+
+    def __len__(self):
+        return len(self._snippets)
 
     def __getitem__(self, key):
         return self._snippets[key]
 
     def __str__(self):
-        n_snippets = len(self._snippets)
-        return f'Library({n_snippets})'
+        return f'Library({len(self)})'

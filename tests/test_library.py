@@ -18,6 +18,16 @@ def test_add(library):
     assert(library._snippets['path'])
 
 
+def test_add_ignores_existing(library):
+    library.add(Snippet('/some/path/foo'))
+    original_len = len(library)
+
+    library.add(Snippet('/other/path/foo'))
+
+    assert len(library) == original_len
+    assert library['foo'].path == '/some/path/foo'
+
+
 def test_getitem(library):
     library.add(Snippet('/some/path'))
     assert library['path']
