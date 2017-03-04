@@ -15,7 +15,9 @@ def get_local_config(cwd=None) -> dict:
     return data
 
 
-def main() -> None:
-    config = get_local_config()
+def main(cwd=None) -> None:
+    if cwd is None:
+        cwd = os.getcwd()
+    config = get_local_config(cwd)
     for snippet in config.get('snippets', []):
-        print(library[snippet])
+        library[snippet].run(cwd)
