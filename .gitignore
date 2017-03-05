@@ -1,6 +1,12 @@
 examples/*
 
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
 # Generated files
 __pycache__
 .cache
+.coverage
 node_modules

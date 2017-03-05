@@ -7,11 +7,11 @@
     "dev": "concurrently --kill-others 'npm run serve' 'npm run watch:css' 'npm run watch:js'"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.1.8",
+    "babel-preset-env": "^1.2.0",
     "babelify": "^7.3.0",
     "browser-sync": "^2.18.8",
     "browserify": "^14.1.0",
-    "concurrently": "^3.3.0",
+    "concurrently": "^3.4.0",
     "node-sass": "^4.5.0",
     "watchify": "^3.9.0"
   }
