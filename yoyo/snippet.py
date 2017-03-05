@@ -16,6 +16,9 @@ class File:
     def __str__(self):
         return self.path
 
+    def __repr__(self):
+        return self.__str__()
+
 
 class Snippet:
     _files = None
@@ -39,6 +42,13 @@ class Snippet:
         if not self._files:
             self._files = [File(x, self) for x in glob(f'{self.path}/*', recursive=True)]
         return self._files
+
+    def __getitem__(self, key):
+        for item in self.files:
+            if item.path == key or item.name == key:
+                return item
+
+        raise ValueError(f"'{key}' is not in files as a name or path")
 
     def __str__(self):
         return self.name
