@@ -6,7 +6,22 @@ library = Library()
 
 
 def test_merge_json_trivial():
-    assert merge_json('{}', '{}') == '{}'
+    assert merge_json('{}', '{}').strip() == '{}'
 
-    # snippet = library['simple-site']
-    # merge_json(snippet['package.json'].contents, )
+
+def test_merge_json_identity():
+    snippet = library['simple-site']
+    contents = snippet['package.json'].contents
+    assert merge_json(contents, contents).strip() == contents.strip()
+
+
+def test_merge_json_additive():
+    snippet = library['simple-site']
+    contents = snippet['package.json'].contents
+    assert merge_json('{}', contents).strip() == contents.strip()
+
+
+def test_merge_json_preserves_existing():
+    snippet = library['simple-site']
+    contents = snippet['package.json'].contents
+    assert merge_json(contents, '{}').strip() == contents.strip()
