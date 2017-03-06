@@ -2,6 +2,16 @@ import os
 import shutil
 from glob import glob
 
+from .merge_strategies import merge_json
+
+
+def find_strategy(template_file):
+    root, ext = os.path.splitext(template_file.name)
+    if ext == '.json':
+        return merge_json
+
+    return None
+
 
 class File:
     def __init__(self, abspath, snippet):
@@ -32,10 +42,17 @@ class Snippet:
             local_path = os.path.join(cwd, template_file.name)
             print(f'merging {template_file} with {local_path}')
             if os.path.isfile(local_path):
+                strategy = find_strategy(template_file)
+                if strategy:
+                    output = strategy(local_path, template_file)
+                else:
+                    output = template_file.contents
+
+                # Concatenate
                 with open(local_path, 'a') as lf:
-                    lf.write(template_file.contents)
-            else:
-                shutil.copy(template_file.path, local_path)
+                    return lf.write(output)
+
+            shutil.copy(template_file.path, local_path)
 
     @property
     def files(self):
