@@ -25,3 +25,7 @@ def test_merge_json_preserves_existing():
     snippet = library['simple-site']
     contents = snippet['package.json'].contents
     assert merge_json(contents, '{}').strip() == contents.strip()
+
+
+def test_merge_json_updates():
+    assert merge_json('{"a":"foo"}', '{"a":"bar"}').strip() == '{\n  "a": "bar"\n}'
