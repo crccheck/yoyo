@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "lint": "eslint --report-unused-disable-directives .",
+    "pretest": "npm lint"
+  }
+}
