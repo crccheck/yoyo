@@ -1,7 +1,5 @@
-install: ## Install requirements
-	@[ -n "${VIRTUAL_ENV}" ] || [ -f ".python-version" ] || (echo "ERROR: This should be run from a virtualenv" && exit 1)
-	pip install -r requirements.txt
+install: ## Install the project using 'poetry' to manage virtual environment and packages
+	poetry install
 
-.PHONY: requirements.txt
-requirements.txt: ## Regenerate requirements.txt
-	pip-compile requirements.in > $@
+deps:
+	poetry update
